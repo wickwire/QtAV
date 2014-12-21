@@ -52,6 +52,7 @@ unix {
     !no-xv:!no-widgets: OptionalDepends *= xv
     !no-vaapi: OptionalDepends *= vaapi
     !no-cedarv: OptionalDepends *= libcedarv
+    !no-libvdpau-sunxi: OptionalDepends *= libvdpau-sunxi
 }
 
 runConfigTests()

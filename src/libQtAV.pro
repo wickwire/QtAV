@@ -235,6 +235,23 @@ config_libcedarv {
     LIBS += -lvecore -lcedarv
     OTHER_FILES += $$NEON_ASM
 }
+config_libvdpau-sunxi {
+    #DEFINES *= QTAV_HAVE_LIBVDPAU_SUNXI=1
+    QMAKE_CXXFLAGS *= -march=armv7-a
+    neon {
+      QMAKE_CXXFLAGS *= $$QMAKE_CFLAGS_NEON
+    } else {
+      DEFINES *= NO_NEON_OPT
+    }
+    SOURCES += codec/video/VideoDecoderLibVDPAUsunxi.cpp
+    CONFIG += simd #addSimdCompiler xxx_ASM
+    CONFIG += no_clang_integrated_as #see qtbase/src/gui/painting/painting.pri. add -fno-integrated-as from simd.prf
+    NEON_ASM += codec/video/tiled_yuv.S #from libvdpau-sunxi
+    LIBS += -lvdpau
+    OTHER_FILES += $$NEON_ASM
+}
+
+
 macx:!ios: CONFIG += config_vda
 config_vda {
     DEFINES *= QTAV_HAVE_VDA=1

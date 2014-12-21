@@ -25,6 +25,8 @@
 #include <QtCore/QMetaEnum>
 #include <QtAV/Statistics.h>
 
+#include <QStringList>
+
 using namespace QtAV;
 
 MediaMetaData::MediaMetaData(QObject *parent) :
